@@ -8,4 +8,4 @@ dt = 0.1;       % Sampling rate
 %%Define Update Equations (Coefficient matrices)
 % State transition matrix
     % State prediction
-    A = [1 dt; 0 1];
+    A = [1 dt; 0 1];. %% initialize variables for a
