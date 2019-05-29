@@ -9,3 +9,12 @@ dt = 0.1;       % Sampling rate
 % State transition matrix
     % State prediction
     A = [1 dt; 0 1];
+    
+% Input control matrix
+    % Expected effect of the input acceleration on the state
+    B = [dt^2/2; dt];
+
+% Measurement matrix
+    % The expected measurement given the predicted state
+    C = [1 0];
+    
