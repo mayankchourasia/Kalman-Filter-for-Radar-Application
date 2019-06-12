@@ -20,4 +20,10 @@ dt = 0.1;       % Sampling rate
     
      % Acceleration magnitute
     u_t = 10;
+% Initial Sate
+    % Two components: [position; velocity]
+    x_t = [0; 0];
+
+
+    
 
