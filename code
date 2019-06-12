@@ -18,3 +18,6 @@ dt = 0.1;       % Sampling rate
     % The expected measurement given the predicted state
     C = [1 0];
     
+     % Acceleration magnitute
+    u_t = 10;
+
