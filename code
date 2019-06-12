@@ -25,5 +25,12 @@ dt = 0.1;       % Sampling rate
     x_t = [0; 0];
 
 
-    
+    % State Estimante
+    % Estimate of initial location
+    % We will be updating this variable
+    xHat_t = x_t;
+
+% Process Noise
+    % Standard deviation of process (acceleration in this case)
+    u_t_noiseMag = 0.05;
 
