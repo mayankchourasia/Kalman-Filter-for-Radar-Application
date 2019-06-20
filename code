@@ -33,4 +33,63 @@ dt = 0.1;       % Sampling rate
 % Process Noise
     % Standard deviation of process (acceleration in this case)
     u_t_noiseMag = 0.05;
+    
+    % Measurement Noise
+    % Standard deviation of measurement (position in this case)
+    z_t_noiseMag = 10;
+
+% Covariance matrices for noise
+    % Convert stdv into covariance noise by squaring it
+    % Process covariance
+    E_x = u_t_noiseMag^2 * [dt^4/4, dt^3/2; dt^3/2, dt^2];
+
+    % Measurement covariance
+    E_z = z_t_noiseMag^2;
+
+    % Estimate of initial position variance
+    EHat_t = E_x;
+    
+    %%Initialize Result Variables
+    
+     % Actual path
+    p_actual = [];
+
+    % Actual velocity
+    v_actual = [];
+
+    % Measured path
+    z_t = [];
+    
+   %% Simulate Measurements Over Time
+    figure (1);
+clf
+
+for t = 0:dt:duration
+
+    % Generate the Path
+        % Acceleration Noise
+        Ex = u_t_noiseMag*randn*B;
+        % State Prediction
+        x_t = A*x_t + B*u_t + Ex;
+
+    % Generate Measurement
+        % Measurement Noise
+        Ez = z_t_noiseMag*randn;
+        % Measurement Prediction
+        zHat_t = C*x_t + Ez;
+
+    % Store for Plot
+        p_actual = [p_actual; x_t(1)];
+        z_t = [z_t; zHat_t];
+        v_actual = [v_actual; x_t(2)];
+
+    % Iteratively plot the measurement
+        subplot(2,1,1),plot(0:dt:t, p_actual, '-r.')
+        subplot(2,1,1),plot(0:dt:t, z_t, '-k.')
+
+    % Plot theoretical estimate without Kalman
+        subplot(2,1,1),plot(0:dt:t, smooth(z_t),'-g.')
+        axis([0 duration -30 max(p_actual)])
+
+    
 
