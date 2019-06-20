@@ -90,6 +90,20 @@ for t = 0:dt:duration
     % Plot theoretical estimate without Kalman
         subplot(2,1,1),plot(0:dt:t, smooth(z_t),'-g.')
         axis([0 duration -30 max(p_actual)])
+        
+        hold on
+%     pause % Uncomment to see the discrete progress
+end
+
+
+% Add Labels to Plot
+    xlabel({'Time(s)'});
+    ylabel({'Position(m)'});
+    title({'Path Tracking without Kalman Filter'});
+    legend('Estimation','Actual','Measured')
+    hold on
+   
+
 
     
 
