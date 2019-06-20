@@ -115,7 +115,15 @@ end
 
     % State
     x_t = [0; 0];
+  % Prior covariance
+    E_tminus1 = E_x;
+    EHat_t_mag = [];
 
+    % Predicted state
+    x_predic =[];
+
+    % Predicted covariance
+    E_predic = [];
   
    
 
