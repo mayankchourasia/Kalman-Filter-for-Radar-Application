@@ -102,6 +102,21 @@ end
     title({'Path Tracking without Kalman Filter'});
     legend('Estimation','Actual','Measured')
     hold on
+    
+     
+   %% Apply Kalman Filter
+    
+    
+    % Initialize Estimation Variables
+    % Estimate of the first component of the state (position)
+    xHat_t1 = [];
+    % Estimate of the second component of the state (velocity)
+    xHat_t2 = [];
+
+    % State
+    x_t = [0; 0];
+
+  
    
 
 
